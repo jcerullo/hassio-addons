@@ -1,0 +1,45 @@
+  {
+    "name": "Tennis",
+    "version": "1.4.0",
+    "slug": "apache2",
+    "description": "Apache2 Webserver Addon ",
+    "url": "https://github.com/jcerullo/hassio-addons",
+    "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
+    "startup": "application",
+    "boot": "auto",
+    "webui": "[PROTO:ssl]://[HOST]:[PORT:443]",
+    "map": ["share:rw", "media:rw", "ssl"],
+    "ingress": true,
+    "panel_icon": "mdi:web-box",
+    "services": ["mysql:need"],
+    "hassio_api": true,
+    "hassio_role": "default",
+    "ports": {
+      "80/tcp": 80,
+      "443/tcp": 443
+    },
+    "ports_description": {
+      "80/tcp": "Web interface http",
+      "443/tcp": "SSL Web interface"
+    },
+    "options": {
+      "document_root": "/share/htdocs",
+      "php_ini": "/share/apache2addon_php.ini",
+      "default_conf": "default",
+      "default_ssl_conf": "default",
+      "website_name":"https://thevillages.duckdns.org:8123",
+      "ssl": true,
+      "certfile": "fullchain.pem",
+      "keyfile": "privkey.pem"
+    },
+    "schema": {
+      "document_root":"str",
+      "php_ini":"str",
+      "default_conf":"str",
+      "default_ssl_conf":"str",
+      "website_name":"str",
+      "ssl": "bool",
+      "certfile": "str",
+      "keyfile": "str"
+    }
+  }
